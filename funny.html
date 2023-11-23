@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Happy</title>
+  <style>
+    #blueBox {
+      width: 100px;
+      height: 100px;
+      background-color: rgb(0, 204, 255);
+      position: absolute;
+      top: 0;
+      left: 0;
+      opacity: 0;
+      rotate: 0;
+      transition: opacity 1s ease-in-out;
+    }
+
+    #imageContainer {
+      width: 100px;
+      height: 100px;
+      display: none;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(0.75);
+    }
+    
+    #yourImage {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+  </style>
+</head>
+<!-- Replace 'favicon.ico' with the path to your icon file -->
+<link rel="icon" href="files/nano2.png" type="image/x-icon">
+<!-- For mobile devices -->
+<link rel="apple-touch-icon" href="files/nano2.png">
+
+<body onload="animateBox()">
+
+  <div id="blueBox"></div>
+  <div id="imageContainer">
+    <img src="files/Nano.jpg" alt="Your Image" id="yourImage">
+  </div>
+
+  <script>
+    function animateBox() {
+      var blueBox = document.getElementById('blueBox');
+      var imageContainer = document.getElementById('imageContainer');
+
+      // Fade in the blue box
+      blueBox.style.opacity = '1';
+
+      // After 2.5 seconds, move and scale the blue box
+      setTimeout(function() {
+        blueBox.style.transition = 'all 1s ease-in-out';
+        blueBox.style.top = '50%';
+        blueBox.style.left = '50%';
+        blueBox.style.transform = 'translate(-50%, -50%) scale(4)';
+      }, 2500);
+
+      // After moving and scaling, show the image at the same position and scale
+      setTimeout(function() {
+        imageContainer.style.transition = 'all 1s ease-in-out';
+        blueBox.style.display = 'none';
+        imageContainer.style.transform = blueBox.style.transform
+        imageContainer.style.display = 'block';
+      }, 3500); // Adjust the timing if needed
+    }
+  </script>
+</body>
+</html>
