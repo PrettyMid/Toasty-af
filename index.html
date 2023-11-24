@@ -7,19 +7,20 @@
 			background-color: rgb(0,0,0);
 			background-image: url("files/BoxTile.jpg");
 			background-repeat: repeat;
-			animation: moveBackground 20s linear infinite, fade-in 1500ms;
+			animation: moveBackground 20s cubic-bezier(0.445, 0.05, 0.55, 0.95) infinite, fade-in 1500ms;
 			color: rgb(255, 255, 255);
 			text-shadow: 5px 5px calc(15px + 2vw) #000000af;
 			font-size: calc(25px + 2vw);;
-			font-family: Helvetica;
+			font-family: Arial, Helvetica, sans-serif;
 			text-align: center;
 			margin: 0;
 			padding: 0;
 		}
 
 		@keyframes moveBackground {
-			from { background-position: 0 0; }
-			to { background-position: 0 -100%; }
+			0% { background-position: 0 0; }
+			50% { background-position: 0 -100%; }
+			100% { background-position: 0 0; }
 		}
 
 		.container {
@@ -31,7 +32,7 @@
 		}
 		.box {
 			background-color: rgb(202, 164, 92);
-			background-image: url("files/Nano.jpg");
+			background-image: url("files/IMG_4927.jpg");
 			background-position-x: center;
 			background-position-y: center;
 			width: 80%;
@@ -40,11 +41,17 @@
 			border-radius: 1vw;
 			box-sizing:content-box;
 			box-shadow: 5px 5px calc(15px + 2vw) #000000af;
-			animation: fade-in 2s;
+			animation: moveBackground2 40s linear infinite, fade-in 2s;
 		}
 		@keyframes fade-in {
 			from { opacity: 0; }
 			to { opacity: 1; }
+		}
+        
+        @keyframes moveBackground2 {
+			0% { background-position: left center; }
+			50% { background-position: right center; }
+			100% { background-position: left center; }
 		}
 
 		button {
@@ -66,6 +73,23 @@
 		button:hover {
 			background-color: rgb(255, 214, 80)
 		}
+
+		.textContainer {
+      position: absolute;
+      bottom: 10px;
+      left: 10px;
+      background-color: #00000000;
+      padding: 10px;
+    }
+
+    /* Styling for the text */
+    .text {
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 16px;
+      color: #ffffff;
+	  text-shadow: 5px 5px 10px #000000;
+    }
+
 	</style>
 </head>
 <!-- Replace 'favicon.ico' with the path to your icon file -->
@@ -76,7 +100,7 @@
 <body>
 	<h1>toast's box house</h1>
 	<p1 id="randomHeader"></p1>
-	<audio id="hoverSound" src="files/hoverSound.wav" preload="auto"></audio>
+	
   <script>
     // Array of strings
     const strings = [
@@ -98,22 +122,24 @@
 	  "i'm pagi!",
 	  "that mf fish",
 	  "Family Guy",
-	  "haters gonna hate *hakase walking gif*"
+	  "GBYGUJKJDEDH!",
+	  "and then popbob said",
+	  "7",
+	  "$0.016 steam  credits!!! 💸🤑💵💶💷💰🪙💳💴💹🫰",
+	  "無知は至福 (Ingnorace is bliss)",
+	  "they call me the wanderer",
+	  "haters gonna hate *hakase walking gif*",
+	  "トーストは本当に好きだ (i really like toast)",
+	  "(•ิ_•ิ)?",
+	  "ദ്ദി ˉ͈̀꒳ˉ͈́ )✧",
+	  "stay toasty af! B)"
       // Add more strings as needed
     ];
     
-    var HoverSound = document.getElementById('hoverSound');
-
-
-    function playSound() {  
-	  HoverSound.currentTime = 0;
-      HoverSound.play();
-    }
-
-	function openHTMLFile() {
-      // Replace 'file.html' with the path to your HTML file
-      window.open('files/funny.html', '_blank'); // Opens in a new tab or window
-    }
+    // function playSound() {  
+	//  HoverSound.currentTime = 0;
+    //  HoverSound.play();
+    //}
 
     function setRandomHeaderText() {
       // Get a random index within the range of the strings array
@@ -122,19 +148,23 @@
       // Get the random string from the array
       const randomString = strings[randomIndex];
 
-      // Set the random string as the text content of the h1 element
+      // Set the random string as the text content of the p1 element
       document.getElementById("randomHeader").textContent = randomString;
     }
 	window.onload = setRandomHeaderText
-
+    // window.onmousemove
   </script>
 	<div class="container">
 		<div class="box">
-			<button onclick="window.location.href='https://twitter.com/SpriteSheetRick'">My Twitter/X</button>
-			<button onclick="window.location.href='https://youtube.com/@BasicChel'">My YouTube</button>
+			<button onclick="window.location.href='https://twitter.com/toastypagi'">My Twitter/X</button>
+			<button onclick="window.location.href='https://www.youtube.com/@toastypagi'">My YouTube</button>
 			<button onclick="window.location.href='https://storyzink.com/m/84x33g09'">send anon messages</button>
 			<button onclick="window.location.href='funny.html'">Happy</button>
 		</div>
+	<div class="textContainer">
+		<p class="text">website by: toastypagi !!! :D</p>
+		<p class="text">public-site V1.4</p>
+	  </div>
 	</div>
 </body>
 </html>
