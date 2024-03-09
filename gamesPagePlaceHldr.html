@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Coming Eventually...</title>
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-color: #000;
+        overflow: hidden;
+    }
+
+    .fade-in-text {
+        opacity: 0;
+        font-size: 200%;
+        color: #ffffff;
+        font-family: Arial, sans-serif;
+        animation: fadeIn 5s ease forwards;
+        -webkit-user-select: none; /* Safari */
+        -ms-user-select: none; /* IE 10 and IE 11 */
+        user-select: none; /* Standard syntax */
+        /* text-shadow: 5px 5px calc(15px + 2vw) #ffffffaf; */
+    }
+
+    @keyframes fadeIn {
+        from {
+            transform: scale(1.25);
+            opacity: 0;
+        }
+        to {
+            transform: scale(1.55);
+            opacity: 1;
+        }
+    }
+
+    .raindrop {
+        position: absolute;
+        width: 1px;
+        height: 50px;
+        background-color: rgba(255, 255, 255, 0.5);
+        animation: falling 1s linear;
+    }
+
+    @keyframes falling {
+        0% {
+            transform: translateY(-55px);
+        }
+        100% {
+            transform: translateY(200vh);
+        }
+    }
+</style>
+</head>
+<body>
+<div class="fade-in-text">Coming Eventually...</div>
+<script>
+   const maxRaindrops = 50; // Maximum number of raindrops
+    const raindrops = [];
+
+    function generateRaindrop() {
+        if (raindrops.length >= maxRaindrops) {
+            const oldestRaindrop = raindrops.shift(); // Remove the oldest raindrop
+            oldestRaindrop.remove();
+        }
+
+        const raindrop = document.createElement('div');
+        raindrop.classList.add('raindrop');
+        raindrop.style.left = `${Math.random() * window.innerWidth}px`;
+        raindrop.style.top = `${-Math.random() * window.innerHeight}px`; // Start raindrop from top
+        document.body.appendChild(raindrop);
+        raindrops.push(raindrop);
+
+        raindrop.addEventListener('animationend', () => {
+            raindrops.splice(raindrops.indexOf(raindrop), 1); // Remove raindrop from array when animation ends
+            raindrop.remove();
+        });
+    }
+    setTimeout(function() {
+    setInterval(generateRaindrop, 50); // Adjust interval for raindrop spawn rate
+    }, 5500)  
+</script>
+</body>
+</html>

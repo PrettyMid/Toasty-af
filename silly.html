@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>super silly</title>
+<style>
+    body {
+        margin: 0;
+        overflow: hidden;
+        background-color: black;
+    }
+
+    .text {
+        position: absolute;
+        color: #ffffff;
+        font-size: 16px;
+        font-family: Arial, sans-serif;
+        transform-origin: center;
+        animation: scaleAnimation 5s linear forwards;
+        -webkit-user-select: none; /* Safari */
+        -ms-user-select: none; /* IE 10 and IE 11 */
+        user-select: none; /* Standard syntax */
+    }
+
+    @keyframes scaleAnimation {
+        from {
+            transform: scale(1);
+            opacity: 1;
+        }
+        to {
+            transform: scale(5);
+            opacity: 0;
+        }
+    }
+</style>
+</head>
+<body>
+<script>
+    function generateRandomText() {
+        const textElement = document.createElement('div');
+        textElement.classList.add('text');
+        textElement.innerText = "i'm silly";
+        
+        const randomX = Math.random() * window.innerWidth;
+        const randomY = Math.random() * window.innerHeight;
+        
+        textElement.style.left = randomX + 'px';
+        textElement.style.top = randomY + 'px';
+        
+        document.body.appendChild(textElement);
+    }
+
+    setInterval(generateRandomText, 200);
+</script>
+</body>
+</html>
