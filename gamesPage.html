@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Fade Out Button</title>
+  <style>
+    
+    @font-face {
+        font-family: 'PixelFont'; /* Name your custom font */
+        src: url('files/PixelifySans-VariableFont_wght.ttf') format('ttf'), /* URL to your font files */
+        /* Add additional font properties if needed, like font-weight, font-style, etc. */
+    }
+
+	
+    body {
+			background-color: rgb(0,0,0);
+			background-image: url("files/BoxTile.jpg");
+			background-repeat: repeat;
+			animation: moveBackground 20s cubic-bezier(0.445, 0.05, 0.55, 0.95) infinite, fade-in 1500ms;
+			color: rgb(255, 255, 255);
+			text-shadow: 5px 5px calc(15px + 2vw) #000000af;
+			font-size: calc(25px + 2vw);;
+			font-family: Arial, Helvetica, sans-serif;
+			text-align: center;
+			margin: 0;
+			padding: 0;
+		}
+
+		@keyframes moveBackground {
+			0% { background-position: 0 0; }
+			50% { background-position: 0 -100%; }
+			100% { background-position: 0 0; }
+		}
+
+		.container {
+			display: flex;
+			flex-direction:row;
+			align-items: center;
+			justify-content: center;
+			height: 50vh;		
+		}
+		.box {
+			background-color: rgb(202, 164, 92);
+			background-image: url("files/IMG_4927.jpg");
+			background-position-x: center;
+			background-position-y: center;
+			width: 80%;
+			max-width: 900px;
+			padding: 23px;
+			border-radius: 1vw;
+			box-sizing:content-box;
+			box-shadow: 5px 5px calc(15px + 2vw) #000000af;
+			animation: moveBackground2 40s linear infinite, fade-in 2s;
+		}
+		@keyframes fade-in {
+			from { opacity: 0; }
+			to { opacity: 1; }
+		}
+        
+        @keyframes moveBackground2 {
+			0% { background-position: left center; }
+			50% { background-position: right center; }
+			100% { background-position: left center; }
+		}
+
+		.button {
+			background-color: rgb(103, 161, 179);
+			color: rgb(255, 255, 255);
+			padding: 10px;
+			border:none;
+			margin-left: 60px;
+			margin-right: 60px;
+			margin-top: 10px;
+			margin-bottom: 10px;
+			border-radius: 5px;
+			font-size: calc(15px + 2vw);;
+			font-family: Helvetica;
+			box-shadow: 5px 5px 10px #0000006c;
+			cursor: pointer;
+			transition: background-color 75ms ease-in-out;
+		}
+		.button:hover {
+			background-color: rgb(255, 214, 80)
+		}
+
+		.textContainer {
+      position: absolute;
+      bottom: 10px;
+      left: 10px;
+      background-color: #00000000;
+      padding: 10px;
+    }
+
+    /* Styling for the text */
+    .text {
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 16px;
+      color: #ffffff;
+	  text-shadow: 5px 5px 10px #000000;
+    }
+
+    /* Styling for the full-screen button */
+    .fullScreenButton {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgb(0, 0, 0);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 1;
+	  color: rgb(255, 255, 255);
+	  font-size: 30px;
+	  font-family: 'PixelFont', sans-serif; /* Use the custom font for body text */
+      transition: opacity 500ms linear;
+      z-index: 9999;
+    }
+
+    /* Styling for the content behind the button */
+    .content {
+      position: relative;
+      z-index: 1;
+      /* Add your content styles here */
+    }
+  </style>
+</head>
+<!-- Replace 'favicon.ico' with the path to your icon file -->
+<link rel="icon" href="files/nano2.png" type="image/x-icon">
+<!-- For mobile devices -->
+<link rel="apple-touch-icon" href="files/nano2.png">
+
+<body>
+  <div class="content">
+    <!-- Content behind the button -->
+    <h1>toasty games!</h1>
+    <!-- Add more content as needed -->
+    <div class="container">
+		<div class="box">
+			<button class="button" onclick="window.location.href='funny.html'">funny</button>
+		</div>
+    <!-- Full-screen button -->
+    <button class="fullScreenButton" onclick="fadeOutButton()">Click To Insert ¢20 Coin</button>
+  </div>
+
+  <script>
+    function fadeOutButton() {
+      var fullScreenButton = document.querySelector('.fullScreenButton');
+
+      // Set opacity to 0 to fade out the button
+      fullScreenButton.style.opacity = '0';
+
+      // Hide the button after the fade-out animation ends
+      setTimeout(function() {
+        fullScreenButton.style.display = 'none';
+      }, 500); // Adjust timing to match the transition duration
+    }
+  </script>
+</body>
+</html>
